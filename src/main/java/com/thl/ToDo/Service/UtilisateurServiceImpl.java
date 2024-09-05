@@ -4,6 +4,7 @@ package com.thl.ToDo.Service;
 import com.thl.ToDo.Entity.Utilisateur;
 import com.thl.ToDo.Exception.NotFoundException;
 import com.thl.ToDo.Repository.UtilisateurRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +12,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UtilisateurServiceImpl implements UtilisateurService {
 
-    @Autowired
-    private UtilisateurRepository utilisateurRepository;
+    private final UtilisateurRepository utilisateurRepository;
 
     @Override
     public Utilisateur saveUtilisateur(Utilisateur utilisateur) {

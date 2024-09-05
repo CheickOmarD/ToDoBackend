@@ -6,22 +6,18 @@ import com.thl.ToDo.Entity.Utilisateur;
 import com.thl.ToDo.Exception.NotFoundException;
 import com.thl.ToDo.Repository.TacheRepository;
 import com.thl.ToDo.Repository.UtilisateurRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class TacheServiceImpl implements TacheService{
 
-    @Autowired
-    private TacheRepository tacheRepository;
-
-    @Autowired
-    private UtilisateurRepository utilisateurRepository;
-
-
+    private final TacheRepository tacheRepository;
+    private final UtilisateurRepository utilisateurRepository;
 
     @Override
     public Tache saveTache(Tache tache) {
