@@ -39,7 +39,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
     @Override
     public Optional<Utilisateur> findById(Long utilisateurId) {
-        return Optional.empty();
+        return utilisateurRepository.findById(utilisateurId);
     }
 
     @Override

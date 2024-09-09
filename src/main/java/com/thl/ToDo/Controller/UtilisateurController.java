@@ -46,26 +46,22 @@ public Utilisateur fetchUtilisateurById(@PathVariable("Id") Long utilisateurId  
         return " Supprimé!";
     }
 
-    @PutMapping("/utilisateur/{Id}")
-    public Utilisateur updateUtilisateur(Long utilisateurId, Utilisateur utilisateur) {
+    @PutMapping("/utilisateur/{utilisateurId}")
+    public Utilisateur updateUtilisateur( @PathVariable Long utilisateurId, @RequestBody Utilisateur utilisateur) {
         Optional<Utilisateur> optionalUtilisateurDB = utilisateurService.findById(utilisateurId);
 
         if (optionalUtilisateurDB.isPresent()) {
             Utilisateur utilisateurDB = optionalUtilisateurDB.get();
-
-            if (Objects.nonNull(utilisateur.getNom()) && !"".equalsIgnoreCase(utilisateur.getNom())) {
+            if (!utilisateur.getNom().trim().isEmpty()){
                 utilisateurDB.setNom(utilisateur.getNom());
             }
-            if (Objects.nonNull(utilisateur.getPrenom()) && !"".equalsIgnoreCase(utilisateur.getPrenom())) {
+            if (!utilisateur.getPrenom().trim().isEmpty()){
                 utilisateurDB.setPrenom(utilisateur.getPrenom());
             }
-            if (Objects.nonNull(utilisateur.getMotDepass()) && !"".equalsIgnoreCase(utilisateur.getMotDepass())) {
-                utilisateurDB.setMotDepass(utilisateur.getMotDepass());
-            }
-            if (Objects.nonNull(utilisateur.getEmail()) && !"".equalsIgnoreCase(utilisateur.getEmail())) {
+            if (!utilisateur.getEmail().trim().isEmpty()){
                 utilisateurDB.setEmail(utilisateur.getEmail());
-            }
 
+            }
             return utilisateurService.save(utilisateurDB);
 
         } else {

@@ -1,6 +1,6 @@
 package com.thl.ToDo.Request;
 
-
+import jakarta.persistence.Entity;
 import lombok.*;
 
 
@@ -9,9 +9,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class LoginRequest {
+public class LoginResponse {
 
-    private String email;
+    private String jwt;
     private String username;
-    private String password;
+    private String email;
 }

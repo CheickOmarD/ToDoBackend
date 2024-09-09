@@ -19,8 +19,6 @@ public interface TacheService {
 
    Tache fetchByNom(String tacheTitre);
 
-   public Tache save(Tache tacheDB);
-
    Optional<Tache> findById(Long tacheId);
 
    public Tache assignerTache(Long tacheId, Long utilisateurId);
@@ -28,4 +26,8 @@ public interface TacheService {
    public List<Tache> getTachesCreeesParUtilisateur(Long utilisateurId);
 
    public List<Tache> getTachesAssigneesAUtilisateur(Long utilisateurId);
+
+   public List<Tache> getTachesByUserId(Long userId);
+
+   public Tache save(Tache tacheDB);
 }

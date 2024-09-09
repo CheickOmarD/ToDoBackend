@@ -12,6 +12,7 @@ import com.thl.ToDo.Jwt.JwtUtils;
 import com.thl.ToDo.Repository.RoleRepository;
 import com.thl.ToDo.Repository.UserRepository;
 import com.thl.ToDo.Request.LoginRequest;
+import com.thl.ToDo.Request.LoginResponse;
 import com.thl.ToDo.Request.SignupRequest;
 import com.thl.ToDo.Response.JwtResponse;
 import com.thl.ToDo.Response.MessageResponse;
@@ -52,12 +53,10 @@ public class AuthController {
         String jwt = jwtUtils.generateJwtToken(authentication);
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
-                .collect(Collectors.toList());
 
-        return ResponseEntity
-                .ok(new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles));
-    }
+        LoginResponse loginResponse = new LoginResponse(jwt, userDetails.getUsername(), userDetails.getEmail());
+
+        return ResponseEntity.ok(loginResponse);    }
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {

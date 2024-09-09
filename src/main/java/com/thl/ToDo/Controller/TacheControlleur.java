@@ -5,6 +5,7 @@ import com.thl.ToDo.Entity.Tache;
 import com.thl.ToDo.Exception.NotFoundException;
 import com.thl.ToDo.Service.TacheService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,12 +20,15 @@ public class TacheControlleur {
     @Autowired
     private TacheService tacheService;
 
-
-
-
     @PostMapping("/tache")
     public Tache saveTache(@RequestBody Tache tache){
         return tacheService.saveTache(tache);
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Tache>> getTachesByUserId(@PathVariable Long userId) {
+        List<Tache> taches = tacheService.getTachesByUserId(userId);
+        return ResponseEntity.ok(taches);
     }
 
     @GetMapping("/tache")

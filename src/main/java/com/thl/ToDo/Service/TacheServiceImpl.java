@@ -24,6 +24,9 @@ public class TacheServiceImpl implements TacheService{
         return tacheRepository.save(tache);
     }
 
+
+
+
     @Override
     public List<Tache> fetchTacheList() {
         return tacheRepository.findAll();
@@ -56,11 +59,6 @@ public class TacheServiceImpl implements TacheService{
     }
 
     @Override
-    public Tache save(Tache tacheDB) {
-        return tacheRepository.save(tacheDB);
-    }
-
-    @Override
     public Optional<Tache> findById(Long tacheId) {
         return Optional.empty();
     }
@@ -84,6 +82,16 @@ public class TacheServiceImpl implements TacheService{
     @Override
     public List<Tache> getTachesAssigneesAUtilisateur(Long utilisateurId) {
         return tacheRepository.findByCreateurId(utilisateurId);
+    }
+
+    @Override
+    public List<Tache> getTachesByUserId(Long userId) {
+        return tacheRepository.findByAssigneAId(userId);
+    }
+
+    @Override
+    public Tache save(Tache tacheDB) {
+        return tacheRepository.save(tacheDB);
     }
 
 
