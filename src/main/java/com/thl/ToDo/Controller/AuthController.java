@@ -2,21 +2,19 @@ package com.thl.ToDo.Controller;
 
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
+
 import com.thl.ToDo.Entity.Role;
 import com.thl.ToDo.Entity.User;
 import com.thl.ToDo.Enums.ERole;
-import com.thl.ToDo.Jwt.JwtUtils;
+import com.thl.ToDo.security.Jwt.JwtUtils;
 import com.thl.ToDo.Repository.RoleRepository;
 import com.thl.ToDo.Repository.UserRepository;
 import com.thl.ToDo.Request.LoginRequest;
 import com.thl.ToDo.Request.LoginResponse;
 import com.thl.ToDo.Request.SignupRequest;
-import com.thl.ToDo.Response.JwtResponse;
 import com.thl.ToDo.Response.MessageResponse;
-import com.thl.ToDo.security.Services.UserDetailsImpl;
+import com.thl.ToDo.Service.UserDetailsImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

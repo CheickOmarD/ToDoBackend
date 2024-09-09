@@ -1,11 +1,7 @@
 package com.thl.ToDo.Config;
 
-import com.thl.ToDo.Entity.Tache;
 import com.thl.ToDo.Entity.User;
-import com.thl.ToDo.Entity.Utilisateur;
-import com.thl.ToDo.Repository.TacheRepository;
 import com.thl.ToDo.Repository.UserRepository;
-import com.thl.ToDo.Repository.UtilisateurRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -1,11 +1,11 @@
-package com.thl.ToDo.Jwt;
+package com.thl.ToDo.security.Jwt;
 
 
 import java.security.Key;
 import java.util.Date;
 
 
-import com.thl.ToDo.security.Services.UserDetailsImpl;
+import com.thl.ToDo.Service.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;

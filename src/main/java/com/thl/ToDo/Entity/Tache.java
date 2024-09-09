@@ -19,15 +19,15 @@ public class Tache {
     private Long id;
     private String titre;
     private String description;
-    private LocalDateTime date;
+    private LocalDateTime date = LocalDateTime.now();
 
     @Enumerated(EnumType.STRING)
     private Status status;
 
     @ManyToOne
-    private Utilisateur assigneA;
+    private User assigneA;
     @ManyToOne
-    private Utilisateur createur;
+    private User createur;
 
 
 }

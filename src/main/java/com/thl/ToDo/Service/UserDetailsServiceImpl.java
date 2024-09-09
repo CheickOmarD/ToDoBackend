@@ -1,4 +1,4 @@
-package com.thl.ToDo.security.Services;
+package com.thl.ToDo.Service;
 
 import com.thl.ToDo.Entity.User;
 import com.thl.ToDo.Repository.UserRepository;

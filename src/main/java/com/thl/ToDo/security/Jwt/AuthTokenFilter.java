@@ -1,9 +1,9 @@
-package com.thl.ToDo.Jwt;
+package com.thl.ToDo.security.Jwt;
 
 
 import java.io.IOException;
 
-import com.thl.ToDo.security.Services.UserDetailsServiceImpl;
+import com.thl.ToDo.Service.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

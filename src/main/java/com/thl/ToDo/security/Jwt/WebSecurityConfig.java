@@ -1,8 +1,6 @@
-package com.thl.ToDo.security;
+package com.thl.ToDo.security.Jwt;
 
-import com.thl.ToDo.Jwt.AuthEntryPointJwt;
-import com.thl.ToDo.Jwt.AuthTokenFilter;
-import com.thl.ToDo.security.Services.UserDetailsServiceImpl;
+import com.thl.ToDo.Service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

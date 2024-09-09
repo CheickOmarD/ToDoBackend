@@ -2,10 +2,10 @@ package com.thl.ToDo.Service;
 
 
 import com.thl.ToDo.Entity.Tache;
-import com.thl.ToDo.Entity.Utilisateur;
+import com.thl.ToDo.Entity.User;
 import com.thl.ToDo.Exception.NotFoundException;
 import com.thl.ToDo.Repository.TacheRepository;
-import com.thl.ToDo.Repository.UtilisateurRepository;
+import com.thl.ToDo.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +17,17 @@ import java.util.Optional;
 public class TacheServiceImpl implements TacheService{
 
     private final TacheRepository tacheRepository;
-    private final UtilisateurRepository utilisateurRepository;
+    private final UserRepository userRepository;
+    private  UserService userService;
+    private User user;
+
 
     @Override
     public Tache saveTache(Tache tache) {
+//        User author = userService.getAuthor();
+//        tache.setAssigneA(author);
+//        tache.setCreateur(author);
+
         return tacheRepository.save(tache);
     }
 
@@ -47,8 +54,8 @@ public class TacheServiceImpl implements TacheService{
     }
 
     @Override
-    public Tache updateTache(Long tacheId, Tache tache) {
-        Tache tacheDB = tacheRepository.findById(tacheId).get();
+    public Tache updateTache( Tache tache) {
+        Tache tacheDB = tacheRepository.findById(tache.getId()).get();
         return tacheRepository.save(tacheDB);
     }
 
@@ -64,35 +71,33 @@ public class TacheServiceImpl implements TacheService{
     }
 
     @Override
-    public Tache assignerTache(Long tacheId, Long utilisateurId) {
+    public Tache assignerTache(Long tacheId, Long userId) {
         Tache tache = tacheRepository.findById(tacheId)
                 .orElseThrow(() -> new NotFoundException("Tâche non trouvée avec l'ID : " + tacheId));
 
-        Utilisateur utilisateur = utilisateurRepository.findById(utilisateurId)
-                .orElseThrow(() -> new NotFoundException("Utilisateur non trouvé avec l'ID : " + utilisateurId));
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NotFoundException("User non trouvé avec l'ID : " + userId));
 
-        tache.setAssigneA(utilisateur);
+        tache.setAssigneA(user);
         return tacheRepository.save(tache);
     }
 
     @Override
-    public List<Tache> getTachesCreeesParUtilisateur(Long utilisateurId) {
-        return tacheRepository.findByCreateurId(utilisateurId);    }
+    public List<Tache> getTachesCreeesParUser(Long userId) {
+        return tacheRepository.findByCreateurId(userId);    }
 
     @Override
-    public List<Tache> getTachesAssigneesAUtilisateur(Long utilisateurId) {
-        return tacheRepository.findByCreateurId(utilisateurId);
+    public List<Tache> getTachesAssigneesAUser(Long userId) {
+        return tacheRepository.findByCreateurId(userId);
     }
 
     @Override
     public List<Tache> getTachesByUserId(Long userId) {
+
         return tacheRepository.findByAssigneAId(userId);
     }
 
-    @Override
-    public Tache save(Tache tacheDB) {
-        return tacheRepository.save(tacheDB);
-    }
+
 
 
 }

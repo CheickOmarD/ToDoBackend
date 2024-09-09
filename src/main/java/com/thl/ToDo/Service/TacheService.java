@@ -15,19 +15,18 @@ public interface TacheService {
 
    public void deleteTacheById(Long tacheId);
 
-   public Tache updateTache(Long tacheId, Tache tache);
+   public Tache updateTache( Tache tache);
 
    Tache fetchByNom(String tacheTitre);
 
    Optional<Tache> findById(Long tacheId);
 
-   public Tache assignerTache(Long tacheId, Long utilisateurId);
+   Tache assignerTache(Long tacheId, Long userId);
 
-   public List<Tache> getTachesCreeesParUtilisateur(Long utilisateurId);
+   List<Tache> getTachesCreeesParUser(Long userId);
 
-   public List<Tache> getTachesAssigneesAUtilisateur(Long utilisateurId);
+   List<Tache> getTachesAssigneesAUser(Long userId);
 
    public List<Tache> getTachesByUserId(Long userId);
 
-   public Tache save(Tache tacheDB);
 }

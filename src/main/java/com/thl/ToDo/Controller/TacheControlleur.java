@@ -67,7 +67,7 @@ public class TacheControlleur {
                 tacheDB.setStatus(tache.getStatus());
             }
 
-            return tacheService.save(tacheDB);
+            return tacheService.updateTache(tacheDB);
 
         } else {
             throw new NotFoundException("Tâche non trouvée avec l'ID : " + tacheId);
@@ -79,20 +79,20 @@ public class TacheControlleur {
         return  tacheService.fetchByNom(tacheTitre);
     }
 
-    @PostMapping("/{tacheId}/assigner/{utlisateurId}")
-    public Tache assignerTache(@PathVariable Long tacheId, @PathVariable Long utilisateurId){
-        return tacheService.assignerTache(tacheId,utilisateurId);
+    @PostMapping("/{tacheId}/assigner/{userId}")
+    public Tache assignerTache(@PathVariable Long tacheId, @PathVariable Long userId){
+        return tacheService.assignerTache(tacheId,userId);
     }
 
     @GetMapping("/creepar/{utilisateurId}")
-    public List<Tache> getTachesCreeesParUtilisateur(@PathVariable Long utilisateurId) {
-        return tacheService.getTachesCreeesParUtilisateur(utilisateurId);
+    public List<Tache> getTachesCreeesParUser(@PathVariable Long userId) {
+        return tacheService.getTachesCreeesParUser(userId);
     }
 
     // Voir toutes les tâches assignées à un utilisateur
-    @GetMapping("/assigneeA/{utilisateurId}")
-    public List<Tache> getTachesAssigneesAUtilisateur(@PathVariable Long utilisateurId) {
-        return tacheService.getTachesAssigneesAUtilisateur(utilisateurId);
+    @GetMapping("/assigneeA/{userId}")
+    public List<Tache> getTachesAssigneesAUser(@PathVariable Long userId) {
+        return tacheService.getTachesAssigneesAUser(userId);
     }
 
 }

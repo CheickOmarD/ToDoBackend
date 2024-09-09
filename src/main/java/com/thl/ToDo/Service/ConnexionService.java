@@ -1,7 +1,6 @@
 package com.thl.ToDo.Service;
 
-import jakarta.persistence.Entity;
-import lombok.*;
+
 import org.springframework.stereotype.Service;
 
 
