@@ -90,6 +90,7 @@ public class TacheControlleur {
     }
 
     // Voir toutes les tâches assignées à un utilisateur
+
     @GetMapping("/assigneeA/{userId}")
     public List<Tache> getTachesAssigneesAUser(@PathVariable Long userId) {
         return tacheService.getTachesAssigneesAUser(userId);

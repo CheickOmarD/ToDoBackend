@@ -7,13 +7,12 @@ import com.thl.ToDo.Enums.ERole;
 import jakarta.persistence.*;
 import lombok.*;
 
-
-@Table( name = "users",
+@Entity
+@Table(name = "users",
         uniqueConstraints = {
                 @UniqueConstraint(columnNames = "username"),
                 @UniqueConstraint(columnNames = "email")
         })
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,17 +22,30 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String username;
     private String lastName;
     private String email;
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    private ERole role;
-
     @ManyToMany
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    public User(String username, String email, String encode) {
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
     }
+
+    public Set<String> getRoleNames() {
+        Set<String> roleNames = new HashSet<>();
+        for (Role role : roles) {
+            roleNames.add(role.getName().name());
+        }
+        return roleNames;
+    }
+
 }

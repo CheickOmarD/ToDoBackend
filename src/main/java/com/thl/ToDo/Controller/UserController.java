@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @Getter
@@ -24,9 +25,9 @@ public class UserController {
         return userService.saveUser(user);
     }
 
+
     @GetMapping("/user")
     public List<User> fetchUserList() {
-
         return userService.fetchUserList();
     }
 
@@ -40,18 +41,19 @@ public class UserController {
 
     @DeleteMapping("/user/{Id}")
     public String deleteUserById(@PathVariable("Id") Long userId) {
-       return userService.deleteUserById(userId);
+        return userService.deleteUserById(userId);
     }
 
 
     @PutMapping("/user")
-    public User updateUser( @RequestBody User user) {
-        return  userService.update(user);
+    public User updateUser(@RequestBody User user) {
+        return userService.update(user);
 
     }
 
-//    @GetMapping("/utilisateur/nom/{nom}")
-//    public  User fetchUserByUsername(@PathVariable("nom") String username){
-//        return  userService.fetchUserByUsername(username);
-//    }
+    @PutMapping("/assign-role")
+    public void assignRole(@RequestBody User user) {
+        userService.assignRole(user);
+    }
+
 }

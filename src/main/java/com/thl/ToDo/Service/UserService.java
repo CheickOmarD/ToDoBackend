@@ -18,6 +18,9 @@ public interface UserService {
 
     Optional<User> findById(Long userId);
 
+    void assignRole(User user);
 
     User getAuthor();
+
+
 }
