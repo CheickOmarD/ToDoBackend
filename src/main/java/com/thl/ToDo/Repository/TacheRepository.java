@@ -15,4 +15,5 @@ public interface TacheRepository extends JpaRepository<Tache , Long >{
     List<Tache> findByAssigneAId(Long assigneAId);
 
 
+    Tache findByTitre(String tache);
 }

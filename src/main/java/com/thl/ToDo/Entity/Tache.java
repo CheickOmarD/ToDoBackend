@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -27,8 +29,8 @@ public class Tache {
     @ManyToOne
     private User assigneA;
     @ManyToOne
+    @JoinColumn(name = "createur_id")
     private User createur;
 
-
-}
+    }
 

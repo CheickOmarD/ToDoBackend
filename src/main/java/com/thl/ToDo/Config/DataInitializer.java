@@ -25,7 +25,7 @@ public class DataInitializer implements CommandLineRunner {
         if (userRepository.count()==0) {
             String encodedPassword = encoder.encode("00000000");
             User admin = new User();
-            admin.setEmail("cheick@gmail.com");
+            admin.setEmail("cheickodi5@gmail.com");
             admin.setUsername("cheickna");
             admin.setPassword(encodedPassword);
             userRepository.save(admin);

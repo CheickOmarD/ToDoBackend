@@ -7,6 +7,8 @@ import com.thl.ToDo.Exception.NotFoundException;
 import com.thl.ToDo.Repository.RoleRepository;
 import com.thl.ToDo.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -87,6 +89,11 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User getAuthor() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName();
+            return userRepository.findByUsername(username);
+        }
         return null;
     }
 

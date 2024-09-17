@@ -1,6 +1,7 @@
 package com.thl.ToDo.Service;
 
 import com.thl.ToDo.Entity.Tache;
+import com.thl.ToDo.Enums.Status;
 import com.thl.ToDo.Exception.NotFoundException;
 
 import java.util.List;
@@ -29,4 +30,9 @@ public interface TacheService {
 
    public List<Tache> getTachesByUserId(Long userId);
 
+    Tache fetchByTitre(String tacheTitre);
+
+    Tache assignerTache(Tache tache);
+
+    Tache updateTacheStatus(Long id, Status status);
 }
